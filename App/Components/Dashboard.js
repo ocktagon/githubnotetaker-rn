@@ -1,4 +1,5 @@
 var React = require('react-native');
+var Profile = require('./Profile');
 
 var {
   Text,
@@ -23,7 +24,7 @@ var styles = StyleSheet.create({
   }
 });
 
-class Dashboard extends React.Component{
+class Dashboard extends React.Component {
 
   makeBackground(btn){
     var obj = {
@@ -44,7 +45,11 @@ class Dashboard extends React.Component{
   }
 
   goToProfile(){
-    console.log('Going to profile page');
+    this.props.navigator.push({
+      component: Profile,
+      title: 'Profile Page',
+      passProps: {userInfo: this.props.userInfo}
+    })
   }
   goToRepos(){
     console.log('Going to repos');
